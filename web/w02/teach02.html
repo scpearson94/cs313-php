@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    
+    <title>Sophia Pearson's Week 02 Index</title>
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+    <link rel="stylesheet" href="teach02Styles.css">
+</head>
+<body>
+
+    <h1>CSE 341</h1>
+    <h2>Week 02 Teach Activity</h2>
+    <div id="firstDiv" class="myGroup">This is div 1</div>
+    <div id="secondDiv" class="myGroup">This is div 2</div>
+    <div id="thirdDiv" class="myGroup">This is... well, you get the picture</div>
+    <section>Enter a color: <input id="newColorInput" type="text"></section>
+    <button id="clickBtn" onclick=displayAlert()>Click Me</button>
+    <button id="changeColorBtn" onclick=changeDiv1Color()>Change 1st color</button>
+    <button id="changeColor2Btn">Change 2nd color</button>
+    <button id="fadeDiv3">Fade 3rd Div In/Out</button>
+    <script src="teach02Js.js"></script>
+
+    <script>
+        $(document).ready(function() {
+            $("#changeColor2Btn").click(function() {
+                var new_color = $("#newColorInput").val();
+                $("#secondDiv").css("background-color", new_color);
+            });
+
+            $("#fadeDiv3").click(function() {
+                $("#thirdDiv").fadeToggle();
+            });
+        });
+
+    </script>
+</body>
+</html>
