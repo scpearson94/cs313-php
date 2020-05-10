@@ -150,7 +150,7 @@
 
     </div>
 
-    <button onClick="cart.php">View Cart</button>
+    <button onclick="window.location.href = 'cart.php';">View Cart</button>
     
     <?php include "footer.html"; ?>
     

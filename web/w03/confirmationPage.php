@@ -1,8 +1,8 @@
-<!DOCTYPE html>
 <?php
     session_start();
 ?>
 
+<!DOCTYPE html>
 <html>
 <head>
     <meta charset="UTF-8" />
@@ -88,7 +88,7 @@
     ?>
 
     <div id="body-content">
-    <h2>Cart</h2>
+    <h2>Confirmation Page</h2>
 
     <p>So you bought some vowels.</p>
 
@@ -123,10 +123,31 @@
                 <td></td>
                 <td><b>$" . $totalCost . "</b></td>
                 <td></td>
-            </tr>"
+            </tr>";
         ?>
     </table>
     </form>
+
+    <?php
+        $street = "";
+        $city = "";
+        $state = "";
+
+        if ($_SERVER["REQUEST_METHOD"] == "POST") {
+            $street = htmlspecialchars($_POST['street']);
+            $city = htmlspecialchars($_POST['city']);
+            $state = htmlspecialchars($_POST['state']);
+        }
+
+        if (isset($_POST['street']) && isset($_POST['city']) && isset($_POST['state'])) {
+            echo 
+            "<section>Shipping Address</section>
+            <section>Street: " . $street . "</section>
+            <section>City: " . $city . "</section>
+            <section>State: " . $state . "</section>";
+        }
+
+    ?>
 
     </div>
 
