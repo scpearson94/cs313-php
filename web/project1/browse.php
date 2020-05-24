@@ -10,7 +10,7 @@
     
     <title>Sophia Pearson's Store for CSE341</title>
     <link rel="stylesheet" href="styles.css">
-    <link rel="shortcut icon" type="image/png" href="images/favicon.png"/>
+    <!--<link rel="shortcut icon" type="image/png" href="images/favicon.png"/>-->
 </head>
 <?php $currentPage = 'Browse'; ?>
 <body>

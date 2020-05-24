@@ -1,3 +1,5 @@
+<?php
+
 function getBrowseList () {
     foreach ($db->query('SELECT name, price, image_url FROM product') as $row)
     {
