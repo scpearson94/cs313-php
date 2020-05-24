@@ -1,7 +1,7 @@
 <?php
 echo "no bug here model1!";
 function getBrowseList () {
-    foreach ($db->query('SELECT name, price, image_url FROM product') as $row)
+    foreach ($db->query('SELECT product_type_id, name, price, image_url FROM product') as $row)
     {
         echo "no bug here model2!";
         echo 'name: ' . $row['name'];
@@ -11,6 +11,5 @@ function getBrowseList () {
         echo '<br/>';
     }
 }
-
-echo "no bug here model3!";
 getBrowseList();
+echo "no bug here model3!";
