@@ -1,0 +1,29 @@
+#Creates a new table and define a primary key
+CREATE TABLE IF NOT EXISTS users (
+    id  SERIAL NOT NULL PRIMARY KEY,
+    username    VARCHAR(15) NOT NULL,
+    email   VARCHAR(40) NOT NULL,
+    password    VARCHAR(255) NOT NULL,
+    UNIQUE (username, email)
+);
+
+CREATE TABLE IF NOT EXISTS conferences (
+    id  SERIAL NOT NULL PRIMARY KEY,
+    year    SMALLINT NOT NULL
+);
+
+CREATE TABLE IF NOT EXISTS speakers (
+    id  SERIAL NOT NULL PRIMARY KEY,
+    name    VARCHAR(40) NOT NULL,
+    lastname    VARCHAR(40) NOT NULL,
+    calling VARCHAR(40) DEFAULT NULL
+);
+
+CREATE TABLE IF NOT EXISTS notes (
+    id  SERIAL NOT NULL PRIMARY KEY,
+    creation_date TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    user_id INT NOT NULL REFERENCES users(id),
+    speaker_id    INT NOT NULL REFERENCES speakers(id),
+    conference_id    INT NOT NULL REFERENCES conferences(id),
+    notes TEXT NOT NULL
+);
