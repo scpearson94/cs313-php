@@ -29,6 +29,7 @@
     <!--inventory table-->
         <?php include "controller.php"; ?>
     </form>
+        <?php echo "no bug in browse!"; ?>
 
     <br>
 
