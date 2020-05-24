@@ -10,3 +10,5 @@ function getBrowseList () {
     echo '<br/>';
     }
 }
+
+getBrowseList();

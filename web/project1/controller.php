@@ -1,7 +1,5 @@
 <?php
 
-require "model.php";
-
 try
 {
   $dbUrl = getenv('DATABASE_URL');
@@ -24,4 +22,4 @@ catch (PDOException $ex)
   die();
 }
 
-getBrowseList();
+require "model.php";
