@@ -1,7 +1,9 @@
 <?php
 echo "no bug here model1!";
 function getBrowseList () {
-    foreach ($db->query('SELECT product_type_id, name, price, image_url FROM product') as $row)
+    $statement = $db->prepare("SELECT product_type_id, name, price, image_url FROM product");
+    $statement->execute();
+    while ($row = $statement->fetch(PDO::FETCH_ASSOC))
     {
         echo "no bug here model2!";
         echo 'name: ' . $row['name'];
