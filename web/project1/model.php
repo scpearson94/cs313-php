@@ -1,6 +1,6 @@
 <?php
 echo "no bug here model1!";
-function getBrowseList () {
+function getBrowseList ($db) {
     echo "we made it to the model funtion";
     $stmt = $db->prepare("SELECT * FROM table WHERE price=:price AND name=:name");
     echo "we made it past the statement declaratrion";
