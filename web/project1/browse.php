@@ -38,7 +38,10 @@
     
     <form method="post" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>">
     <!--inventory table-->
-        <?php include "model.php"; ?>
+        <?php 
+            include "model.php"; 
+            getBrowseList();
+        ?>
     </form>
         <?php echo "no bug in browse!"; ?>
 
