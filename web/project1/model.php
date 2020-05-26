@@ -2,7 +2,7 @@
 echo "no bug here model1!";
 function getBrowseList ($db) {
     echo "we made it to the model funtion";
-    $stmt = $db->prepare("SELECT * FROM table WHERE price=:price AND name=:name");
+    $stmt = $db->prepare("SELECT * FROM product WHERE price=:price AND name=:name");
     echo "we made it past the statement declaratrion";
     $stmt->execute(array(':name' => $name, ':price' => $price));
     echo "we made it past the statement execution";
