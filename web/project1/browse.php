@@ -1,5 +1,16 @@
 <?php
-    session_start();
+/**********************************************************
+* File: viewScriptures.php
+* Author: Br. Burton
+* 
+* Description: This file shows an example of how to query a
+*   PostgreSQL database from PHP.
+***********************************************************/
+
+    require "dbConnect.php";
+    $db = get_db();
+
+    //session_start();
 ?>
 
 <!DOCTYPE html>
@@ -27,7 +38,7 @@
     
     <form method="post" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>">
     <!--inventory table-->
-        <?php include "controller.php"; ?>
+        <?php include "model.php"; ?>
     </form>
         <?php echo "no bug in browse!"; ?>
 

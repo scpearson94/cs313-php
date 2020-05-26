@@ -10,6 +10,8 @@ function getBrowseList () {
         echo ' product type id: ' . $row['product_type_id'];
         echo '<br/>';
     }
+
+
 }
 getBrowseList();
 echo "no bug here model3!";
