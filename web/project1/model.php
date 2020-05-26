@@ -3,6 +3,11 @@ echo "no bug here model1!";
 function getBrowseList () {
     $statement = $db->prepare("SELECT product_type_id, name, price, image_url FROM product");
     $statement->execute();
+    if (isset($statement)) {
+        echo "statement is set";
+    } else {
+        echo "statement is not set";
+    }
     while ($row = $statement->fetch(PDO::FETCH_ASSOC))
     {
         echo "no bug here model2!";
