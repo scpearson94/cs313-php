@@ -16,7 +16,8 @@
 <!DOCTYPE html>
 <html>
 <head>
-    
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     
     <title>Sophia Pearson's Store for CSE341</title>
     <link rel="stylesheet" href="styles.css">
@@ -26,7 +27,7 @@
 <body>
 
     <div id="homeHeader">
-        <!--<?php include "heading.php"; ?>-->
+        <?php include "heading.php"; ?>
         <h1><section id="headerName">Karma Inc.</section>BROWSE</h1>
     </div>
 
@@ -61,10 +62,10 @@
                 <div class="item_price">$3.35</div>
             </section>
         </div>
-        <!--<?php 
+        <?php 
             include "model.php"; 
             getBrowseList($db);
-        ?>-->
+        ?>
     </div>
 
 
