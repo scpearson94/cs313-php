@@ -26,7 +26,7 @@
 <body>
 
     <div id="homeHeader">
-        <?php include "heading.php"; ?>
+        <?php include "heading.html"; ?>
         <h1><section id="headerName">Karma Inc.</section>BROWSE</h1>
     </div>
 
