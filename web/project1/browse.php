@@ -35,13 +35,14 @@
 
     <p>So you want to buy a vowel?</p>
     
-    <form class="content" method="post" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>">
-    <!--inventory table-->
+   <!--inventory table-->
+    <div class="content">
         <?php 
             include "model.php"; 
             getBrowseList($db);
         ?>
-    </form>
+    </div>
+
 
     <br>
 
