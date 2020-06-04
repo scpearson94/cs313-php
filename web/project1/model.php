@@ -5,9 +5,13 @@ function getBrowseList ($db) {
     $statement->execute();
 
     while ($row = $statement->fetch(PDO::FETCH_ASSOC)) {
-        echo 'name: ' . $row['name'];
-        echo ' price: ' . $row['price'];
-        echo ' image_url: ' . $row['image_url'];
-        echo '<br/>';
+        $output = "";
+        $output .= "<img src='images/" . $row['image_url'] . "' alt='" . $row['name'] . "'>";
+        $output .= 'name: ' . $row['name'];
+        $output .= ' price: ' . $row['price'];
+        $output .= ' image_url: ' . $row['image_url'];
+        $output .= '<br/>';
+
+        echo $output;
     }
 }

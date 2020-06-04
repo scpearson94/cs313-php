@@ -1,7 +1,7 @@
 <?php
 /**********************************************************
-* File: viewScriptures.php
-* Author: Br. Burton
+* File: browse.php
+* Author: Sophia Pearson
 * 
 * Description: This file shows an example of how to query a
 *   PostgreSQL database from PHP.
@@ -43,7 +43,6 @@
             getBrowseList($db);
         ?>
     </form>
-        <?php echo "no bug in browse!"; ?>
 
     <br>
 
