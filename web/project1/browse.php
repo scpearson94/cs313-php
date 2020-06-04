@@ -31,26 +31,21 @@
         <h1><section id="headerName">Karma Inc.</section>BROWSE</h1>
     </div>
 
-    <div id="body-content">
     <h2>Current Inventory</h2>
 
     <p>So you want to buy a vowel?</p>
     
-    <form method="post" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>">
+    <form class="content" method="post" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>">
     <!--inventory table-->
-        <div class="content">
-            <?php 
-                include "model.php"; 
-                getBrowseList($db);
-            ?>
-        </div>
+        <?php 
+            include "model.php"; 
+            getBrowseList($db);
+        ?>
     </form>
 
     <br>
 
     <span class="fine-print"></span>
-
-    </div>
 
     <button onclick="window.location.href = 'cart.php';">View Cart</button>
     
