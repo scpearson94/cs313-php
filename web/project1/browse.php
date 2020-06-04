@@ -38,10 +38,12 @@
     
     <form method="post" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>">
     <!--inventory table-->
-        <?php 
-            include "model.php"; 
-            getBrowseList($db);
-        ?>
+        <div class="content">
+            <?php 
+                include "model.php"; 
+                getBrowseList($db);
+            ?>
+        </div>
     </form>
 
     <br>

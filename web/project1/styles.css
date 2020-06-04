@@ -90,10 +90,9 @@ fieldset {
 }
 
 img {
-    margin:auto;
     object-fit: cover;
-    width: 250px; 
-    height: 250px;
+    width:100%; 
+    height: 20vw;
 }
 
 .image_descrip {
