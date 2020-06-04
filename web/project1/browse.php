@@ -27,7 +27,7 @@
 <body>
 
     <div id="homeHeader">
-        <?php include "heading.php"; ?>
+        <!--<?php include "heading.php"; ?>-->
         <h1><section id="headerName">Karma Inc.</section>BROWSE</h1>
     </div>
 
@@ -37,10 +37,35 @@
     
    <!--inventory table-->
     <div class="content">
-        <?php 
+
+        <div class="browse_item">
+            <div class="image_container">
+                <img src="images/ameraucana.jpg" alt="ameraucana">
+            </div>
+            <section class="image_descrip"><div class="item_name">Ameraucana</div>
+                <div class="item_price">$3.35</div>
+            </section>
+        </div>
+        <div class="browse_item">
+            <div class="image_container">
+                <img src="images/tube_feeder.jpg" alt="ameraucana">
+            </div>
+            <section class="image_descrip"><div class="item_name">Ameraucana</div>
+                <div class="item_price">$3.35</div>
+            </section>
+        </div>
+        <div class="browse_item">
+            <div class="image_container">
+                <img src="images/broiler.jpg" alt="ameraucana">
+            </div>
+            <section class="image_descrip"><div class="item_name">Ameraucana</div>
+                <div class="item_price">$3.35</div>
+            </section>
+        </div>
+        <!--<?php 
             include "model.php"; 
             getBrowseList($db);
-        ?>
+        ?>-->
     </div>
 
 
