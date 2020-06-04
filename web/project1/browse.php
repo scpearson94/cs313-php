@@ -22,8 +22,9 @@
     <title>Sophia Pearson's Store for CSE341</title>
     <link rel="stylesheet" href="styles.css">
     <!--<link rel="shortcut icon" type="image/png" href="images/favicon.png"/>-->
+    <?php $currentPage = 'Browse'; ?>
 </head>
-<?php $currentPage = 'Browse'; ?>
+
 <body>
 
     <div id="homeHeader">
@@ -37,31 +38,6 @@
     
    <!--inventory table-->
     <div class="content">
-
-        <div class="browse_item">
-            <div class="image_container">
-                <img src="images/ameraucana.jpg" alt="ameraucana">
-            </div>
-            <section class="image_descrip"><div class="item_name">Ameraucana</div>
-                <div class="item_price">$3.35</div>
-            </section>
-        </div>
-        <div class="browse_item">
-            <div class="image_container">
-                <img src="images/tube_feeder.jpg" alt="ameraucana">
-            </div>
-            <section class="image_descrip"><div class="item_name">Ameraucana</div>
-                <div class="item_price">$3.35</div>
-            </section>
-        </div>
-        <div class="browse_item">
-            <div class="image_container">
-                <img src="images/broiler.jpg" alt="ameraucana">
-            </div>
-            <section class="image_descrip"><div class="item_name">Ameraucana</div>
-                <div class="item_price">$3.35</div>
-            </section>
-        </div>
         <?php 
             include "model.php"; 
             getBrowseList($db);
