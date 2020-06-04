@@ -6,11 +6,11 @@ function getBrowseList ($db) {
 
     while ($row = $statement->fetch(PDO::FETCH_ASSOC)) {
         $output = "";
+        $output .= "<div class='browse_item'><div class='image_container'>";
         $output .= "<img src='images/" . $row['image_url'] . "' alt='" . $row['name'] . "'>";
-        $output .= 'name: ' . $row['name'];
-        $output .= ' price: ' . $row['price'];
-        $output .= ' image_url: ' . $row['image_url'];
-        $output .= '<br/>';
+        $output .= "</div><section class='image_descrip'><div class='item_name'>";
+        $output .= $row['name'] . "</div><div class='item_price'>";
+        $output .= "</div></section></div>" . $row['price'];
 
         echo $output;
     }
