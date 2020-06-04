@@ -1,18 +1,3 @@
-<?php
-/**********************************************************
-* File: browse.php
-* Author: Sophia Pearson
-* 
-* Description: This file shows an example of how to query a
-*   PostgreSQL database from PHP.
-***********************************************************/
-
-    require "dbConnect.php";
-    $db = get_db();
-
-    //session_start();
-?>
-
 <!DOCTYPE html>
 <html>
 <head>
@@ -26,7 +11,7 @@
 <body>
 
     <div id="homeHeader">
-        <?php include "heading.html"; ?>
+        <?php include "heading.php"; ?>
         <h1><section id="headerName">Karma Inc.</section>BROWSE</h1>
     </div>
 
