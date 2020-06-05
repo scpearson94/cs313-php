@@ -52,14 +52,14 @@
 function getBrowseList ($db) {
     $statement = $db->prepare("SELECT id, name, price, image_url FROM product");
     $statement->execute();
-    $output = "";
 
     while ($row = $statement->fetch(PDO::FETCH_ASSOC)) {
         $product = new Product($row['name'], $row['price'], $row['id'], $row['image_url']);
         array_push($productArray, $product);
     }
 
-    echo $output;
+    print($productArray);
+    displayBrowseList();
 }
 
 function displayBrowseList () {
@@ -76,12 +76,6 @@ function displayBrowseList () {
 
     }
 
+    print($productArray);
     echo $output;
-}
-
-function addToCart ($db) {
-    $statement = $db->prepare("SELECT id, name, price, image_url FROM product WHERE id='" . $productToAdd . "'");
-    $statement->execute();
-
-
 }

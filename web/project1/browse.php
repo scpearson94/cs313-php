@@ -97,7 +97,7 @@
             <?php 
                 include "model.php"; 
                 getBrowseList($db);
-                displayBrowseList();
+                
             ?>
         </div>
     </form>
