@@ -116,6 +116,10 @@ img {
     width:80%
 }
 
+.addToCartBtn {
+    width: 80%;
+}
+
 .fine-print {
     font-size: 0.5em;
 }

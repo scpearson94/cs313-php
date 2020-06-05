@@ -17,13 +17,11 @@
 
     <div id="homeHeader">
         <?php include "heading.php"; ?>
-        <h1><section id="headerName">Karma Inc.</section>HOME PAGE</h1>
+        <h1><section id="headerName">Home Page</section>Chickens Galore</h1>
     </div>
 
     <div id="body-content">
     <h2>Home</h2>
-
-    <p>So you want to buy a vowel?</p>
 
     </div>
     

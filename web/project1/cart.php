@@ -147,8 +147,6 @@
     <div id="body-content">
     <h2>Cart</h2>
 
-    <p>So you want to buy a vowel?</p>
-
     <form method="post" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>">
     <table style="width:100%">
         <tr>

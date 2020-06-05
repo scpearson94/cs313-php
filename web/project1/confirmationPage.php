@@ -90,8 +90,6 @@
     <div id="body-content">
     <h2>Confirmation Page</h2>
 
-    <p>So you bought some vowels.</p>
-
     <form method="post" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>">
     <table style="width:100%">
         <tr>
