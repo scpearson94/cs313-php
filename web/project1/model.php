@@ -13,7 +13,7 @@ function getBrowseList ($db) {
     }
     echo "made it past the while loop";
 
-    print($productArray);
+    print_r($productArray);
     displayBrowseList($productArray);
 }
 
