@@ -31,16 +31,15 @@
         private $name;
         private $price;
         private $quantity;
-        private $product_id;
+        private $image_url;
 
-        function __construct($name, $price, $product_id, $image_url) {
+        function __construct($name, $price, $image_url) {
             $this->name = $name;
             $this->price = $price;
-            $this->product_id = $product_id;
             $this->image_url = $image_url;
 
-            if (isset($_SESSION[$this->product_id])) {
-                $this->quantity = $_SESSION[$this->product_id]->quantity;
+            if (isset($_SESSION[$this->name])) {
+                $this->quantity = $_SESSION[$this->name]->quantity;
             } else {
                 $this->quantity = 0;
             }
@@ -52,10 +51,6 @@
 
         function get_price() {
             return $this->price;
-        }
-
-        function get_product_id() {
-            return $this->product_id;
         }
 
         function get_image_url() {
@@ -70,10 +65,10 @@
             return $this->price * $this->quantity;
         }
         
-        function addToCart($product_id) {
+        function addToCart($name) {
             $this->quantity += 1;
-            $_SESSION[$this->product_id] = $this;
-            echo "There are " . $_SESSION[$this->product_id]->quantity . " " . $_SESSION[$this->product_id]->name . " in your cart.";
+            $_SESSION[$this->name] = $this;
+            echo "There are " . $_SESSION[$this->name]->quantity . " " . $_SESSION[$this->name]->name . " in your cart.";
         }
     }
 

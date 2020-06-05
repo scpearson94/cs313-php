@@ -1,20 +1,18 @@
 <?php
 
-    $productArray = array();
-
     class Product {
         private $name;
         private $price;
         private $quantity;
-        private $product_id;
+        private $image_url;
 
-        function __construct($name, $price, $product_id) {
+        function __construct($name, $price, $image_url) {
             $this->name = $name;
             $this->price = $price;
-            $this->product_id = $product_id;
+            $this->image_url = $image_url;
 
-            if (isset($_SESSION[$this->product_id])) {
-                $this->quantity = $_SESSION[$this->product_id]->quantity;
+            if (isset($_SESSION[$this->name])) {
+                $this->quantity = $_SESSION[$this->name]->quantity;
             } else {
                 $this->quantity = 0;
             }
@@ -28,8 +26,8 @@
             return $this->price;
         }
 
-        function get_product_id() {
-            return $this->product_id;
+        function get_image_url() {
+            return $this->image_url;
         }
 
         function get_quantity() {
@@ -40,29 +38,30 @@
             return $this->price * $this->quantity;
         }
         
-        function addToCart($product_id) {
+        function addToCart($name) {
             $this->quantity += 1;
-            $_SESSION[$this->product_id] = $this;
-            echo "There are " . $_SESSION[$this->product_id]->quantity . " " . $_SESSION[$this->product_id]->name . " in your cart.";
+            $_SESSION[$this->name] = $this;
+            echo "There are " . $_SESSION[$this->name]->quantity . " " . $_SESSION[$this->name]->name . " in your cart.";
         }
     }
 
 
 
 function getBrowseList ($db) {
-    $statement = $db->prepare("SELECT id, name, price, image_url FROM product");
+    $productArray = array();
+    $statement = $db->prepare("SELECT name, price, image_url FROM product");
     $statement->execute();
 
     while ($row = $statement->fetch(PDO::FETCH_ASSOC)) {
-        $product = new Product($row['name'], $row['price'], $row['id'], $row['image_url']);
+        $product = new Product($row['name'], $row['price'], $row['image_url']);
         array_push($productArray, $product);
     }
 
     print($productArray);
-    displayBrowseList();
+    displayBrowseList($productArray);
 }
 
-function displayBrowseList () {
+function displayBrowseList ($productArray) {
     $output = "";
 
     foreach ($productArray as $product) {
@@ -72,7 +71,7 @@ function displayBrowseList () {
         $output .= "</div><section class='image_descrip'><div class='item_name'>";
         $output .= $product->name . "</div><div class='item_price'>$";
         $output .= $product->price . "</div></section>";
-        $output .= "<input type='submit' class='addToCartBtn' name='" . $product->id . "' value='Add to Cart'/></div>";
+        $output .= "<input type='submit' class='addToCartBtn' name='" . $product->name . "' value='Add to Cart'/></div>";
 
     }
 
