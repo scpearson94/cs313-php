@@ -1,52 +1,5 @@
 <?php
 
-    class Product {
-        private $name;
-        private $price;
-        private $quantity;
-        private $image_url;
-
-        function __construct($name, $price, $image_url) {
-            $this->name = $name;
-            $this->price = $price;
-            $this->image_url = $image_url;
-
-            if (isset($_SESSION[$this->name])) {
-                $this->quantity = $_SESSION[$this->name]->quantity;
-            } else {
-                $this->quantity = 0;
-            }
-        }
-
-        function get_name() {
-            return $this->name;
-        }
-
-        function get_price() {
-            return $this->price;
-        }
-
-        function get_image_url() {
-            return $this->image_url;
-        }
-
-        function get_quantity() {
-            return $this->quantity;
-        }
-
-        function get_total() {
-            return $this->price * $this->quantity;
-        }
-        
-        function addToCart($name) {
-            $this->quantity += 1;
-            $_SESSION[$this->name] = $this;
-            echo "There are " . $_SESSION[$this->name]->quantity . " " . $_SESSION[$this->name]->name . " in your cart.";
-        }
-    }
-
-
-
 function getBrowseList ($db) {
     echo "now in get list function";
     $productArray = array();
