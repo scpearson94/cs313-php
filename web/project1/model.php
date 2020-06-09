@@ -22,7 +22,6 @@ function getBrowseList ($db) {
         $product_index++;
     }
 
-    print_r($productArray);
     echo $output;
 
     return $productArray;

@@ -33,8 +33,8 @@
                 $this->name = $name;
                 $this->price = $price;
                 $this->image_url = $image_url;
-                $this->$productId = $product_id;
-    
+                $this->product_id = $product_id;
+
                 if (isset($_SESSION[$this->product_id])) {
                     $this->quantity = $_SESSION[$this->product_id]->quantity;
                 } else {
@@ -150,11 +150,12 @@
                     <td>" . $product->get_quantity() . "</td>
                     <td>$" . $product->get_total() . "</td>
                     <td>
-                        <input type='submit' name='" . $product->get_name() . "' value='-'/>
-                        <input type='submit' name='" . $product->get_name() . "' value='+'/>
-                        <input type='submit' name='" . $product->get_name() . "' value='Remove from Cart'/>
+                        <input type='submit' name='" . $product->get_product_id() . "' value='-'/>
+                        <input type='submit' name='" . $product->get_product_id() . "' value='+'/>
+                        <input type='submit' name='" . $product->get_product_id() . "' value='Remove from Cart'/>
                     </td>
                 </tr>";
+                
                 $totalCost += $product->get_total();
             }
             echo 

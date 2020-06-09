@@ -76,8 +76,7 @@
         function addToCart() {
             $this->quantity += 1;
             $_SESSION[$this->product_id] = $this;
-            //echo "<script>alert('" . $_SESSION[$this->product_id]->quantity . " ". $_SESSION[$this->product_id]->name . " in your cart.');</script>";
-            print_r($_SESSION);
+            echo "<script>alert('" . $_SESSION[$this->product_id]->quantity . " ". $_SESSION[$this->product_id]->name . " in your cart.');</script>";
         }
     }
 
@@ -98,7 +97,6 @@
                 if($_SERVER['REQUEST_METHOD'] == 'POST') {
                     $myPost = array_keys($_POST);
                     $productToAdd = $myPost[0];
-                    echo $productToAdd;
                     $productArray[$productToAdd]->addToCart();
                 }
             ?>
