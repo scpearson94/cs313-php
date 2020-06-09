@@ -31,14 +31,21 @@
     </form>
 
     </div>
-    
-    <?php
-        if(isset($_POST['myOrder'])) {
-            $myOrder = $_POST['myOrder'];
-            include "model.php";
-            lookUpOrder($myOrder);
-        }
-    ?>
+    <table style="width:100%">
+        <tr>
+            <th>Item</th>
+            <th>Price</th> 
+            <th>Quantity</th>
+            <th>Total</th>
+        </tr>
+        <?php
+            if(isset($_POST['myOrder'])) {
+                $myOrder = $_POST['myOrder'];
+                include "model.php";
+                lookUpOrder($myOrder);
+            }
+        ?>
+    </table>
     
     <?php include "footer.html"; ?>
     
