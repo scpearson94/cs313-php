@@ -94,6 +94,8 @@
             print_r($_POST);
             $keys = array_keys($_POST);
             $values = array_values($_POST);
+            print_r($keys);
+            print_r($values);
             $myKey = $myPostKey[0];
             $myValue = $myPostValue[0];
             $productToChange;
