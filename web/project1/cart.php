@@ -22,6 +22,8 @@
 
     <?php 
 
+        $validationMsg = "";
+
         class Product {
             private $name;
             private $price;
@@ -96,7 +98,6 @@
             $myValue = $values[0];
             $productToChange;
             $functionToCall = "";
-            $validationMsg = "";
 
             //set the product to change
             foreach($_SESSION as $key => $value) {
