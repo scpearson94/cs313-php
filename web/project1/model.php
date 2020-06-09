@@ -21,7 +21,7 @@ function getBrowseList ($db) {
         $output .= $row['price'] . "</div></section><section class='addToCartSct'><input type='submit' class='addToCartBtn' name='" . $product_id . "' value='Add to Cart'/></section></div>";
     }
 
-    print_r($_SESSION);
+    print_r($productArray);
     echo $output;
 
     return $productArray;
