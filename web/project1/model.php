@@ -29,22 +29,26 @@ function getBrowseList ($db) {
 
 function submitOrder ($db, $first_name, $last_name, $email, $address) {
 
+    echo "1 ";
     $statement = $db->prepare("INSERT INTO customer (firstname, lastname, email, address) VALUES ($first_name, $last_name, $email, $address)");
     $statement->execute();
-
+    echo "2 ";
     $newId = $pdo->lastInsertId('customer_id_seq');
-
+    echo "3 ";
     $statement = $db->prepare("INSERT INTO public.order (customer_id, shipping_type_id, amountpaid) VALUES ($newId, '4', '0.00')");
     $statement->execute();
-
+    echo "4 ";
     $newId = $pdo->lastInsertId('order_id_seq');
-
+    echo "5 ";
     foreach($_SESSION as $key => $product) {
+        echo "6 ";
         $id = ltrim($product->get_product_id(), "_");
         $amount = $product->get_quantity();
-    
+        echo "7 ";
         $statement = $db->prepare("INSERT INTO cart (product_id, amount, order_id) VALUES ($id, $amount)");
         $statement->execute();
+        echo "8 ";
     }
+    echo "9 ";
 
 }

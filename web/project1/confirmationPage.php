@@ -152,7 +152,7 @@
 
                 echo
                 "<section>Customer Information</section>
-                <section>Name: " . $first_name . $last_name . "</section>
+                <section>Name: " . $first_name . " " . $last_name . "</section>
                 <section>Email: " . $email . "</section>
                 <section>Address: " . $address . "</section>";
 
