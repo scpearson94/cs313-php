@@ -4,6 +4,7 @@ function getBrowseList ($db) {
     $statement = $db->prepare("SELECT name, price, image_url FROM product");
     $statement->execute();
     $output = "";
+    $productArray = array();
 
     while ($row = $statement->fetch(PDO::FETCH_ASSOC)) {
         
