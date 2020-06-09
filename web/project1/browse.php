@@ -76,7 +76,8 @@
         function addToCart() {
             $this->quantity += 1;
             $_SESSION[$this->$product_id] = $this;
-            echo "<script>alert('" . $_SESSION[$this->product_id]->quantity . " ". $_SESSION[$this->product_id]->name . " in your cart.');</script>";
+            //echo "<script>alert('" . $_SESSION[$this->product_id]->quantity . " ". $_SESSION[$this->product_id]->name . " in your cart.');</script>";
+            print_r($_SESSION);
         }
     }
 
