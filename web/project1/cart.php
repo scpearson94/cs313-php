@@ -104,7 +104,7 @@
                     $productToChange = $value;
                 }
             }
-            print_r($productToChange);
+
             //set the function to call
             switch ($myValue) {
                 case "-":
@@ -120,7 +120,7 @@
                     echo "nothing happened";
             }
             //change the product quantity
-            $productToChange->functionToCall();
+            $productToChange->$functionToCall();
         }
 
     ?>
