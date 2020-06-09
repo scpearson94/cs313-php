@@ -169,14 +169,16 @@
 
     </div>
 
-    <?php 
+    <script> 
         function checkCart() {
+            <?php
             if (!empty($_SESSION)) { 
                 header("Location: checkout.php");
             }
+            ?>
         }
-    ?>
-    
+    </script>
+
     <button onclick="window.location.href = 'browse.php';">Keep Browsing</button>
     <button onclick="checkCart()">Checkout</button>
     
