@@ -91,6 +91,7 @@
         }
 
         if($_SERVER['REQUEST_METHOD'] == 'POST') {
+            print_r($_POST);
             $keys = array_keys($_POST);
             $values = array_values($_POST);
             $myKey = $myPostKey[0];
