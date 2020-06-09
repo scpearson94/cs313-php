@@ -5,7 +5,7 @@ function getBrowseList ($db) {
     $statement->execute();
     $output = "";
     $productArray = array();
-    $product_id = 1;
+    $product_id = 0;
 
     while ($row = $statement->fetch(PDO::FETCH_ASSOC)) {
         $name = $row['name'];
