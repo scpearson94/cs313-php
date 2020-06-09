@@ -3,7 +3,7 @@
 function displayFilterList () {
     require "dbConnect.php";
     $db = get_db();
-    $statement = $db->prepare("SELECT category FROM product_type AS pt JOIN product AS p ON p.product_type_id = pt.id");
+    $statement = $db->prepare("SELECT category FROM product_type");
     $statement->execute();
     $output = "";
 
