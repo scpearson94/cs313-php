@@ -19,14 +19,7 @@
         <?php include "heading.php"; ?>
         <h1><section id="headerName">Checkout</section>Chickens Galore</h1>
     </div>
-    <?php 
-        if (empty($_SESSION)) { ?>
-           <script>  
-                document.getElementById("backToCartBtn").click();
-            </script>
-    <?php 
-        }
-    ?>
+
     <div id="body-content">
     <h2>Checkout</h2>
 
@@ -42,6 +35,15 @@
     </div>
 
     <button id="backToCartBtn" onclick="window.location.href = 'cart.php';">Return to Cart</button>
+    
+    <?php 
+        if (empty($_SESSION)) { ?>
+           <script>  
+                document.getElementById("backToCartBtn").click();
+            </script>
+    <?php 
+        }
+    ?>
     
     <?php include "footer.html"; ?>
     
