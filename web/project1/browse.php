@@ -106,20 +106,27 @@
         <label for="filter">Filter:</label>
         <select name="filter" id="filter">
             <option value="default">--No filter selected--</option>
-            <option value='livestock'>livestock</option>
             <?php
                 include "filterList.php";
             ?>
         </select>
+        <input type="submit" name="filterBtn" value="Apply Filter"/>
+        <br><br>
         <!--inventory table-->
         <div class="content">
             <?php 
                 include "browseList.php"; 
-                $productArray = getBrowseList();
+                $filter = "";
+                if (isset($_POST['filter'])) {
+                    $filter = $_POST['filter'];
+                }
+                $productArray = getBrowseList($filter);
                 if($_SERVER['REQUEST_METHOD'] == 'POST') {
-                    $myPost = array_keys($_POST);
-                    $productToAdd = $myPost[0];
-                    $productArray[$productToAdd]->addToCart();
+                    if (!isset($_POST['filter'])) {
+                        $myPost = array_keys($_POST);
+                        $productToAdd = $myPost[0];
+                        $productArray[$productToAdd]->addToCart();
+                    }
                 }
             ?>
         </div>

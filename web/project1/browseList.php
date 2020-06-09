@@ -1,9 +1,13 @@
 <?php
 
-function getBrowseList () {
+function getBrowseList ($filter) {
     
     $db = get_db();
-    $statement = $db->prepare("SELECT product_type_id, name, price, image_url FROM product");
+    $stmt = "SELECT name, price, image_url FROM product";
+    if ($filter != "") {
+        $stmt .= " AS p JOIN product_type AS pt ON p.product_type_id = pt.id WHERE category = $filter;";
+    }
+    $statement = $db->prepare($stmt);
     $statement->execute();
     $output = "";
     $productArray = array();
