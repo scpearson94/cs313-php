@@ -116,11 +116,6 @@
                     <td>$" . $product->get_price() . "</td> 
                     <td>" . $product->get_quantity() . "</td>
                     <td>$" . $product->get_total() . "</td>
-                    <td>
-                        <input type='submit' name='" . $product->get_product_id() . "' value='-'/>
-                        <input type='submit' name='" . $product->get_product_id() . "' value='+'/>
-                        <input type='submit' name='" . $product->get_product_id() . "' value='Remove from Cart'/>
-                    </td>
                 </tr>";
                 
                 $totalCost += $product->get_total();
@@ -158,6 +153,7 @@
 
                 include "model.php"; 
                 submitOrder($db, $first_name, $last_name, $email, $address);
+                session_unset();
             }
         }
 
