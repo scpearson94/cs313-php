@@ -5,10 +5,11 @@ function getBrowseList ($db) {
     $statement->execute();
     $output = "";
     $productArray = array();
-    $product_id = 0;
+    $product_index = 0;
 
     while ($row = $statement->fetch(PDO::FETCH_ASSOC)) {
         $name = $row['name'];
+        $product_id = "_" . ($product_index + 1);
         $product = new Product($name, $row['price'], $row['image_url'], $product_id);
         array_push($productArray, $product);
 
@@ -16,9 +17,9 @@ function getBrowseList ($db) {
         $output .= "<img src='images/" . $row['image_url'] . "' alt='" . $name . "'>";
         $output .= "</div><section class='image_descrip'><div class='item_name'>";
         $output .= $name . "</div><div class='item_price'>$";
-        $output .= $row['price'] . "</div></section><section class='addToCartSct'><input type='submit' class='addToCartBtn' name='" . $product_id . "' value='Add to Cart'/></section></div>";
+        $output .= $row['price'] . "</div></section><section class='addToCartSct'><input type='submit' class='addToCartBtn' name='" . $product_index . "' value='Add to Cart'/></section></div>";
     
-        $product_id++;
+        $product_index++;
     }
 
     print_r($productArray);
