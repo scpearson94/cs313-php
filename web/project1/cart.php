@@ -103,7 +103,7 @@
             print_r($_SESSION);
             //set the product to change
             foreach($_SESSION as $key => $value) {
-                echo $value;
+                print_r($value);
                 if ($key == $myKey) {
                     echo "in the if statement ";
                     $productToChange = $value;
