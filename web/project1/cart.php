@@ -119,8 +119,10 @@
                 default:
                     echo "nothing happened";
             }
+            echo $productToChange;
+            echo $functionToCall;
             //change the product quantity
-            $productToChange->functionToCall();
+            //$productToChange->functionToCall();
         }
 
     ?>
@@ -135,7 +137,7 @@
             <th>Price</th> 
             <th>Quantity</th>
             <th>Total</th>
-            <th>Remove from Cart?</th>
+            <th>Edit item?</th>
         </tr>
 
         <?php
