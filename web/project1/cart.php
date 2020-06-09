@@ -182,7 +182,7 @@
     <div id="validationMsg"></div>
 
     <script>
-        document.getElementById("validationMsg").innerHTML = $validationMsg;
+        document.getElementById("validationMsg").innerHTML = <?php echo $validationMsg; ?>;
     </script>
     
     <?php include "footer.html"; ?>
