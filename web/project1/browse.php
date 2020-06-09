@@ -105,10 +105,10 @@
         <!--filter dropdown-->
         <label for="filter">Filter:</label>
         <select name="filter" id="filter">
-            <option value="default">No filter selected</option>
+            <option value="default">--No filter selected--</option>
             <?php
-                include "model.php";
-                displayFilterList();
+                //include "model.php";
+                //displayFilterList();
             ?>
         </select>
         <!--inventory table-->
