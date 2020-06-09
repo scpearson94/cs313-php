@@ -49,7 +49,9 @@ function submitOrder ($db, $first_name, $last_name, $email, $address) {
         $id = ltrim($product->get_product_id(), "_");
         $amount = $product->get_quantity();
         echo "7 ";
-        $statement = $db->prepare("INSERT INTO cart (product_id, amount, order_id) VALUES ($id, $amount)");
+        $statement = $db->prepare("INSERT INTO cart (product_id, amount, order_id) VALUES (:id, :amount)");
+        $statement->bindValue(':id', $id);
+        $statement->bindValue(':amount', $amount);
         $statement->execute();
         echo "8 ";
     }
