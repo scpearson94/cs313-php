@@ -113,8 +113,7 @@
         </select>
         <!--inventory table-->
         <div class="content">
-            <?php 
-                include "model.php"; 
+            <?php  
                 $productArray = getBrowseList();
                 if($_SERVER['REQUEST_METHOD'] == 'POST') {
                     $myPost = array_keys($_POST);
