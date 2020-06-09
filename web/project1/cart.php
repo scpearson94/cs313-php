@@ -98,25 +98,20 @@
             $productToChange;
             $functionToCall = "";
 
-            echo $myKey;
-            echo "before the product to change setup ";
-            print_r($_SESSION);
             //set the product to change
             foreach($_SESSION as $key => $value) {
-                print_r($value);
                 if ($key == $myKey) {
-                    echo "in the if statement ";
                     $productToChange = $value;
                 }
             }
-            echo "made it past the product to change setup";
-            echo $productToChange;
+            print_r($productToChange);
             //set the function to call
-            /*switch ($myValue) {
+            switch ($myValue) {
                 case "-":
                     $functionToCall = "subtractFromCart";
                     break;
                 case "+":
+                    echo "in the add case";
                     $functionToCall = "addToCart";
                     break;
                 case "Remove from Cart":
@@ -125,8 +120,7 @@
                 default:
                     echo "nothing happened";
             }
-            echo $productToChange;
-            echo $functionToCall;*/
+            echo $functionToCall;
             //change the product quantity
             //$productToChange->functionToCall();
         }
