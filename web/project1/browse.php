@@ -101,22 +101,21 @@
 
     <h2>Current Inventory</h2>
     
-    <?php
-        include "model.php";
-    ?>
-        
     <form class="content" method="post" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>">
         <!--filter dropdown-->
         <label for="filter">Filter:</label>
         <select name="filter" id="filter">
             <option value="default">--No filter selected--</option>
+            <option value='livestock'>livestock</option>
             <?php
-                displayFilterList();
+                //include "model.php";
+                //displayFilterList();
             ?>
         </select>
         <!--inventory table-->
         <div class="content">
             <?php 
+                include "model.php"; 
                 $productArray = getBrowseList();
                 if($_SERVER['REQUEST_METHOD'] == 'POST') {
                     $myPost = array_keys($_POST);
