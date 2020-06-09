@@ -15,7 +15,7 @@ function getBrowseList ($db) {
         $output .= "<div class='browse_item'><div class='image_container'>";
         $output .= "<img src='images/" . $row['image_url'] . "' alt='" . $name . "'>";
         $output .= "</div><section class='image_descrip'><div class='item_name'>";
-        $output .= $name . "</div><div class='item_price'>";
+        $output .= $name . "</div><div class='item_price'>$";
         $output .= $row['price'] . "</div></section><section class='addToCartSct'><input type='submit' class='addToCartBtn' name='" . $name . "' value='Add to Cart'/></section></div>";
 
     }

@@ -68,13 +68,9 @@
         }
         
         function addToCart() {
-            echo "in addtocart function";
             $this->quantity += 1;
-            echo "added to quantity";
             $_SESSION[$this->name] = $this;
-            echo "this was added to the session variables";
-            alert("There are " . $_SESSION[$this->name]->quantity . " " . $_SESSION[$this->name]->name . " in your cart.");
-            echo "alert was completed";
+            echo "alert('There are " . $_SESSION[$this->name]->quantity . " ". $_SESSION[$this->name]->name . " in your cart.');";
         }
     }
 
