@@ -102,8 +102,9 @@
             echo "before the product to change setup ";
             //set the product to change
             foreach($_SESSION as $key => $product) {
-                echo $key;
+                echo $product;
                 if ($key == $myKey) {
+                    echo "in the if statement ";
                     $productToChange = $product;
                 }
             }
