@@ -102,7 +102,15 @@
     <h2>Current Inventory</h2>
     
     <form class="content" method="post" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>">
-
+        <!--filter dropdown-->
+        <label for="filter">Filter:</label>
+        <select name="filter" id="filter">
+            <option value="default">--No filter selected--</option>
+            <?php
+                include "model.php";
+                displayFilterList();
+            ?>
+        </select>
         <!--inventory table-->
         <div class="content">
             <?php 
