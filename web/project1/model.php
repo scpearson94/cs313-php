@@ -1,7 +1,8 @@
 <?php
 
 function getBrowseList ($db) {
-    $query = "SELECT * FROM product";
+    echo $query = "SELECT * FROM product";
+    exit;
     $statement = $db->prepare($query);
     $statement->execute();
     $output = "";
