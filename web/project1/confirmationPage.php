@@ -122,7 +122,6 @@
                 <td></td>
                 <td></td>
                 <td><b>$" . $totalCost . "</b></td>
-                <td></td>
             </tr>";
         ?>
     </table>

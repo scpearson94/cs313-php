@@ -65,17 +65,34 @@ function submitOrder ($first_name, $last_name, $email, $address) {
 function lookUpOrder ($myOrder) {
     require "dbConnect.php";
     $db = get_db();
-    $statement = $db->prepare("SELECT product_id, amount FROM cart WHERE order_id = $myOrder");
+    $statement = $db->prepare("SELECT amount, name, price FROM cart AS c JOIN product AS p ON c.product_id = p.id WHERE order_id = $myOrder");
     $statement->execute();
     $output = "";
+    $totalCost = 0;
 
     while ($row = $statement->fetch(PDO::FETCH_ASSOC)) {
-        $product_id = $row['product_id'];
+        $name = $row['name'];
+        $price = $row['price'];
         $amount = $row['amount'];
-
-        $output .= "<div>" . $product_id . "</div>";
-        $output .= "<div>" . $amount . "</div>";
+        $product_total = $price * $amount;
+        
+        $output .= 
+        "<tr> 
+            <td>" . $name . "</td>
+            <td>$" . $price . "</td> 
+            <td>" . $amount . "</td>
+            <td>$" . $product_total . "</td>
+        </tr>";
+        
+        $totalCost += $product->get_total();
     }
+    $output .= 
+    "<tr>
+        <td><b>Total Cost: </b></td>
+        <td></td>
+        <td></td>
+        <td><b>$" . $totalCost . "</b></td>
+    </tr>";
 
     echo $output;
 }

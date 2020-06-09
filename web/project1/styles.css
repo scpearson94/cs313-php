@@ -130,7 +130,7 @@ img {
     justify-content: center;
 }
 
-.validationMsg {
+#validationMsg {
     color: red;
 }
 
