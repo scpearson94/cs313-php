@@ -1,9 +1,8 @@
 <?php
 
-require "dbConnect.php";
-$db = get_db();
-
 function getBrowseList () {
+    require "dbConnect.php";
+    $db = get_db();
     $statement = $db->prepare("SELECT product_type_id, name, price, image_url FROM product");
     $statement->execute();
     $output = "";
@@ -31,7 +30,8 @@ function getBrowseList () {
 }
 
 function submitOrder ($first_name, $last_name, $email, $address) {
-
+    require "dbConnect.php";
+    $db = get_db();
     $statement = $db->prepare("INSERT INTO customer (firstname, lastname, email, address) VALUES (:first_name, :last_name, :email, :address)");
     $statement->bindValue(':first_name', $first_name);
 	$statement->bindValue(':last_name', $last_name);
@@ -63,6 +63,8 @@ function submitOrder ($first_name, $last_name, $email, $address) {
 }
 
 function lookUpOrder ($myOrder) {
+    require "dbConnect.php";
+    $db = get_db();
     $statement = $db->prepare("SELECT product_id, amount FROM cart WHERE order_id = $myOrder");
     $statement->execute();
     $output = "";
