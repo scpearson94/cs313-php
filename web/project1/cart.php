@@ -100,12 +100,13 @@
 
             echo $myKey;
             echo "before the product to change setup ";
+            print_r($_SESSION);
             //set the product to change
-            foreach($_SESSION as $key => $product) {
-                echo $product;
+            foreach($_SESSION as $key => $value) {
+                echo $value;
                 if ($key == $myKey) {
                     echo "in the if statement ";
-                    $productToChange = $product;
+                    $productToChange = $value;
                 }
             }
             echo "made it past the product to change setup";
