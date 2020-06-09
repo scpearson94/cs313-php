@@ -111,7 +111,6 @@
                     $functionToCall = "subtractFromCart";
                     break;
                 case "+":
-                    echo "in the add case";
                     $functionToCall = "addToCart";
                     break;
                 case "Remove from Cart":
@@ -120,9 +119,8 @@
                 default:
                     echo "nothing happened";
             }
-            echo $functionToCall;
             //change the product quantity
-            //$productToChange->functionToCall();
+            $productToChange->functionToCall();
         }
 
     ?>
