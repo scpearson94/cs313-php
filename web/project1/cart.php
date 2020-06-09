@@ -170,7 +170,15 @@
     </div>
 
     <button onclick="window.location.href = 'browse.php';">Keep Browsing</button>
-    <button onclick="window.location.href = 'checkout.php';">Checkout</button>
+    <button onclick="checkCart()">Checkout</button>
+
+    <?php 
+        function checkCart() {
+            if (!empty($_SESSION)) { 
+                header("Location: checkout.php");
+            }
+        }
+    ?>
     
     <?php include "footer.html"; ?>
     

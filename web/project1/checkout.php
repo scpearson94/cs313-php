@@ -34,17 +34,8 @@
     </form>
     </div>
 
-    <button id="backToCartBtn" onclick="window.location.href = 'cart.php';">Return to Cart</button>
-    
-    <?php 
-        if (empty($_SESSION)) { ?>
-           <script>  
-                document.getElementById("backToCartBtn").click();
-            </script>
-    <?php 
-        }
-    ?>
-    
+    <button onclick="window.location.href = 'cart.php';">Return to Cart</button>
+
     <?php include "footer.html"; ?>
     
 </body>
