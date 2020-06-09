@@ -1,8 +1,4 @@
 <?php
-
-    require "dbConnect.php";
-    $db = get_db();
-
     session_start();
 ?>
 
@@ -152,7 +148,7 @@
                 <section>Address: " . $address . "</section>";
 
                 include "model.php"; 
-                $confNum = submitOrder($db, $first_name, $last_name, $email, $address);
+                $confNum = submitOrder($first_name, $last_name, $email, $address);
                 echo "<p>Order Confirmation Number: " . $confNum . "</p>";
                 session_unset();
             }

@@ -1,8 +1,4 @@
 <?php
-
-    require "dbConnect.php";
-    $db = get_db();
-
     session_start();
 ?>
 
@@ -40,7 +36,7 @@
         if(isset($_POST['myOrder'])) {
             $myOrder = $_POST['myOrder'];
             include "model.php";
-            lookUpOrder($db, $myOrder);
+            lookUpOrder($myOrder);
         }
     ?>
     

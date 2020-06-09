@@ -6,10 +6,6 @@
 * Description: This file shows an example of how to query a
 *   PostgreSQL database from PHP.
 ***********************************************************/
-
-    require "dbConnect.php";
-    $db = get_db();
-
     session_start();
 ?>
 
@@ -110,7 +106,7 @@
         <div class="content">
             <?php 
                 include "model.php"; 
-                $productArray = getBrowseList($db);
+                $productArray = getBrowseList();
                 if($_SERVER['REQUEST_METHOD'] == 'POST') {
                     $myPost = array_keys($_POST);
                     $productToAdd = $myPost[0];
