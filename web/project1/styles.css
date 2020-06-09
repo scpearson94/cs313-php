@@ -121,6 +121,11 @@ img {
     width: 80%;
 }
 
+.addToCartSct {
+    display: flex;
+    justify-content: center;
+}
+
 .fine-print {
     font-size: 0.5em;
 }
