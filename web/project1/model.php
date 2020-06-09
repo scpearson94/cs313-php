@@ -30,7 +30,11 @@ function getBrowseList ($db) {
 function submitOrder ($db, $first_name, $last_name, $email, $address) {
 
     echo "1 ";
-    $statement = $db->prepare("INSERT INTO customer (firstname, lastname, email, address) VALUES ($first_name, $last_name, $email, $address)");
+    $statement = $db->prepare("INSERT INTO customer (firstname, lastname, email, address) VALUES (:first_name, :last_name, :email, :address)");
+    $statement->bindValue(':first_name', $first_name);
+	$statement->bindValue(':last_name', $last_name);
+	$statement->bindValue(':email', $email);
+	$statement->bindValue(':address', $address);
     $statement->execute();
     echo "2 ";
     $newId = $pdo->lastInsertId('customer_id_seq');
