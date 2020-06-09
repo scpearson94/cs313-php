@@ -98,6 +98,7 @@
             $productToChange;
             $functionToCall = "";
 
+            echo $myKey;
             echo "before the product to change setup ";
             //set the product to change
             foreach($_SESSION as $key => $product) {
