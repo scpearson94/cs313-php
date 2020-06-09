@@ -89,48 +89,6 @@
             }
         }
 
-        if($_SERVER['REQUEST_METHOD'] == 'POST') {
-            $keys = array_keys($_POST);
-            $values = array_values($_POST);
-            $myKey = $keys[0];
-            $myValue = $values[0];
-            $productToChange;
-            $functionToCall = "";
-
-            //set the product to change
-            foreach($_SESSION as $key => $value) {
-                if ($key == $myKey) {
-                    $productToChange = $value;
-                }
-            }
-
-            //set the function to call
-            switch ($myValue) {
-                case "-":
-                    $functionToCall = "subtractFromCart";
-                    break;
-                case "+":
-                    $functionToCall = "addToCart";
-                    break;
-                case "Remove from Cart":
-                    $functionToCall = "removeFromCart";
-                    break;
-                default:
-                    if (!empty($_SESSION)) { 
-                        header("Location: checkout.php");
-                    } else { ?>
-                    <script>
-                        document.getElementById("validationMsg").innerHTML = "Please add items to the cart before continuing to check out.";
-                    </script>
-                    <?php
-                    }
-            }
-            //change the product quantity
-            if ($functionToCall != "") {
-                $productToChange->$functionToCall();
-            }
-        }
-
     ?>
 
     <div id="body-content">
@@ -182,6 +140,50 @@
     </div>
 
     <div id="validationMsg"></div>
+
+    <?php
+        if($_SERVER['REQUEST_METHOD'] == 'POST') {
+            $keys = array_keys($_POST);
+            $values = array_values($_POST);
+            $myKey = $keys[0];
+            $myValue = $values[0];
+            $productToChange;
+            $functionToCall = "";
+
+            //set the product to change
+            foreach($_SESSION as $key => $value) {
+                if ($key == $myKey) {
+                    $productToChange = $value;
+                }
+            }
+
+            //set the function to call
+            switch ($myValue) {
+                case "-":
+                    $functionToCall = "subtractFromCart";
+                    break;
+                case "+":
+                    $functionToCall = "addToCart";
+                    break;
+                case "Remove from Cart":
+                    $functionToCall = "removeFromCart";
+                    break;
+                default:
+                    if (!empty($_SESSION)) { 
+                        header("Location: checkout.php");
+                    } else { ?>
+                    <script>
+                        document.getElementById("validationMsg").innerHTML = "Please add items to the cart before continuing to check out.";
+                    </script>
+                    <?php
+                    }
+            }
+            //change the product quantity
+            if ($functionToCall != "") {
+                $productToChange->$functionToCall();
+            }
+        }
+    ?>
     
     <?php include "footer.html"; ?>
     
