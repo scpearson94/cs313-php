@@ -97,7 +97,8 @@
             $productToChange;
             $functionToCall = "";
 
-            echo $
+            echo $myKey;
+            echo $myValue;
             //set the product to change
             foreach($_SESSION as $key => $product) {
                 if ($key == $myKey) {
