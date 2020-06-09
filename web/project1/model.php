@@ -11,8 +11,7 @@ function getBrowseList ($db) {
     while ($row = $statement->fetch(PDO::FETCH_ASSOC)) {
         $name = $row['name'];
         $product = new Product($name, $row['price'], $row['image_url'], $product_id);
-        array_push($productArray[$product_id]);
-        $productArray[$product_id] = $product;
+        array_push($productArray, $product);
 
         $output .= "<div class='browse_item'><div class='image_container'>";
         $output .= "<img src='images/" . $row['image_url'] . "' alt='" . $name . "'>";
