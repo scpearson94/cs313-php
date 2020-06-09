@@ -96,7 +96,7 @@
             ?>
         </div>
     </form>
-    <section></section>
+    <p class="clear"></p>
 
     <span class="fine-print"></span>
 
