@@ -179,11 +179,7 @@
 
     </div>
 
-    <div id="validationMsg"></div>
-
-    <script>
-        document.getElementById("validationMsg").innerHTML = <?php echo $validationMsg; ?>;
-    </script>
+    <div id="validationMsg"><?php echo $validationMsg; ?></div>
     
     <?php include "footer.html"; ?>
     
