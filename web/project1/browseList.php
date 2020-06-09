@@ -1,7 +1,7 @@
 <?php
 
 function getBrowseList () {
-    require "dbConnect.php";
+    
     $db = get_db();
     $statement = $db->prepare("SELECT product_type_id, name, price, image_url FROM product");
     $statement->execute();
