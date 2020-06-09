@@ -21,6 +21,7 @@ function getBrowseList ($db) {
 
     }
 
+    print_r($_SESSION);
     echo $output;
 
     return $productArray;
