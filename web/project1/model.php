@@ -1,7 +1,8 @@
 <?php
 
 function getBrowseList ($db) {
-    $statement = $db->prepare("SELECT `id`, product_type_id, `name`, price, image_url FROM product");
+    $query = "SELECT id, product_type_id, name, price, image_url FROM product";
+    $statement = $db->prepare($query);
     $statement->execute();
     $output = "";
     $productArray = array();
