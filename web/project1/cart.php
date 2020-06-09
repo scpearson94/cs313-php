@@ -104,10 +104,10 @@
                 case "-":
                     $functionToCall = "subtractFromCart";
                     break;
-                case "+";
+                case "+":
                     $functionToCall = "addToCart";
                     break;
-                case "Remove from Cart";
+                case "Remove from Cart":
                     $functionToCall = "removeFromCart";
                     break;
                 default:
