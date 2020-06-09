@@ -27,6 +27,7 @@
             private $price;
             private $quantity;
             private $image_url;
+            private $product_id;
 
             function __construct($name, $price, $image_url, $product_id) {
                 $this->name = $name;
