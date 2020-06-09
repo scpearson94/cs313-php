@@ -45,3 +45,6 @@ CREATE TABLE IF NOT EXISTS public.order (
     amountpaid    NUMERIC(12, 2) NOT NULL,
     order_date TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );
+
+ALTER TABLE cart ADD order_id integer NOT NULL REFERENCES public.order(id);
+ALTER TABLE public.order DROP COLUMN cart_id;

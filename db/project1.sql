@@ -21,3 +21,9 @@ INSERT INTO product (product_type_id, name, price, image_url) VALUES ('4', '3 Ga
 INSERT INTO product (product_type_id, name, price, image_url) VALUES ('4', 'Heated Waterer', '24.59', 'heated_waterer.jpg');
 INSERT INTO product (product_type_id, name, price, image_url) VALUES ('4', 'Tube Feeder', '35.90', 'tube_feeder.jpg');
 
+#shipping_type
+INSERT INTO shipping_type (name, price, days) VALUES ('Fedex', '13.95', '7');
+INSERT INTO shipping_type (name, price, days) VALUES ('UPS', '7.50', '5');
+INSERT INTO shipping_type (name, price, days) VALUES ('USPS', '11.20', '10');
+INSERT INTO shipping_type (name, price, days) VALUES ('2-Day Priority', '60.55', '2');
+

@@ -1,4 +1,8 @@
 <?php
+
+    require "dbConnect.php";
+    $db = get_db();
+
     session_start();
 ?>
 
@@ -17,22 +21,26 @@
 
     <div id="homeHeader">
         <?php include "heading.php"; ?>
-        <h1><section id="headerName">Karma Inc.</section>CONFIRMATION</h1>
+        <h1><section id="headerName">Confirmation Page</section>Chickens Galore</h1>
     </div>
 
     <?php 
 
-        class Letter {
+        class Product {
             private $name;
             private $price;
             private $quantity;
+            private $image_url;
+            private $product_id;
 
-            function __construct($name, $price) {
+            function __construct($name, $price, $image_url, $product_id) {
                 $this->name = $name;
                 $this->price = $price;
+                $this->image_url = $image_url;
+                $this->product_id = $product_id;
 
-                if (isset($_SESSION[$this->name])) {
-                    $this->quantity = $_SESSION[$this->name]->quantity;
+                if (isset($_SESSION[$this->product_id])) {
+                    $this->quantity = $_SESSION[$this->product_id]->quantity;
                 } else {
                     $this->quantity = 0;
                 }
@@ -46,44 +54,44 @@
                 return $this->price;
             }
 
+            function get_image_url() {
+                return $this->image_url;
+            }
+
             function get_quantity() {
                 return $this->quantity;
+            }
+
+            function get_product_id() {
+                return $this->product_id;
             }
 
             function get_total() {
                 return $this->price * $this->quantity;
             }
             
+            function addToCart() {
+                $this->quantity += 1;
+                $_SESSION[$this->product_id] = $this;
+                echo "<script>alert('" . $_SESSION[$this->product_id]->quantity . " ". $_SESSION[$this->product_id]->name . " in your cart.');</script>";
+            }
+                    
             function subtractFromCart() {
                 $this->quantity -= 1;
                 if ($this->quantity == 0) {
-                    unset($_SESSION[$this->name]);
+                    unset($_SESSION[$this->product_id]);
                 } else {
-                    $_SESSION[$this->name] = $this;
-                    echo "There are " . $_SESSION[$this->name]->quantity . " " . $_SESSION[$this->name]->name . " in your cart.";
+                    $_SESSION[$this->product_id] = $this;
                 }
-                echo $this->name . " was subtracted from your cart.";
-            }
-
-            function addToCart() {
-                $this->quantity += 1;
-                $_SESSION[$this->name] = $this;
-                echo "There are " . $_SESSION[$this->name]->quantity . " " . $_SESSION[$this->name]->name . " in your cart.";
+                echo "<script>alert('1 ". $this->name . " was subtracted from your cart.');</script>";
             }
 
             function removeFromCart() {
                 $this->quantity = 0;
-                unset($_SESSION[$this->name]);
-                echo $this->name . " was removed from cart.";
+                unset($_SESSION[$this->product_id]);
+                echo "<script>alert('". $this->name . " was removed from cart.');</script>";
             }
         }
-
-        $letterA = new Letter("A", 200);
-        $letterE = new Letter("E", 150);
-        $letterI = new Letter("I", 500);
-        $letterO = new Letter("O", 150);
-        $letterU = new Letter("U", 325);
-        $letterY = new Letter("Y", 1000);
 
     ?>
 
@@ -100,19 +108,22 @@
         </tr>
 
         <?php
-            $vowels = array("A","E","I","O","U","Y");
             $totalCost = 0;
-            foreach($vowels as $vowel) {
-                if (isset($_SESSION[$vowel])) {
-                    echo 
-                    "<tr> 
-                        <td>The letter " . $vowel . "</td>
-                        <td>$" . $_SESSION[$vowel]->get_price() . "</td> 
-                        <td>" . $_SESSION[$vowel]->get_quantity() . "</td>
-                        <td>$" . $_SESSION[$vowel]->get_total() . "</td>
-                    </tr>";
-                    $totalCost += $_SESSION[$vowel]->get_total();
-                }
+            foreach($_SESSION as $key => $product) {
+                echo 
+                "<tr> 
+                    <td>" . $product->get_name() . "</td>
+                    <td>$" . $product->get_price() . "</td> 
+                    <td>" . $product->get_quantity() . "</td>
+                    <td>$" . $product->get_total() . "</td>
+                    <td>
+                        <input type='submit' name='" . $product->get_product_id() . "' value='-'/>
+                        <input type='submit' name='" . $product->get_product_id() . "' value='+'/>
+                        <input type='submit' name='" . $product->get_product_id() . "' value='Remove from Cart'/>
+                    </td>
+                </tr>";
+                
+                $totalCost += $product->get_total();
             }
             echo 
             "<tr>
@@ -127,22 +138,27 @@
     </form>
 
     <?php
-        $street = "";
-        $city = "";
-        $state = "";
+        $first_name = "";
+        $last_name = "";
+        $email = "";
+        $address = "";
 
         if ($_SERVER["REQUEST_METHOD"] == "POST") {
-            $street = htmlspecialchars($_POST['street']);
-            $city = htmlspecialchars($_POST['city']);
-            $state = htmlspecialchars($_POST['state']);
-        }
+            if (isset($_POST['first_name']) && isset($_POST['last_name']) && isset($_POST['email']) && isset($_POST['address'])) {
+                $first_name = htmlspecialchars($_POST['first_name']);
+                $last_name = htmlspecialchars($_POST['last_name']);
+                $email = htmlspecialchars($_POST['email']);
+                $address = htmlspecialchars($_POST['address']);
 
-        if (isset($_POST['street']) && isset($_POST['city']) && isset($_POST['state'])) {
-            echo 
-            "<section>Shipping Address</section>
-            <section>Street: " . $street . "</section>
-            <section>City: " . $city . "</section>
-            <section>State: " . $state . "</section>";
+                echo
+                "<section>Customer Information</section>
+                <section>Name: " . $first_name . $last_name . "</section>
+                <section>Email: " . $email . "</section>
+                <section>Address: " . $address . "</section>";
+
+                include "model.php"; 
+                submitOrder($db, $first_name, $last_name, $email, $address);
+            }
         }
 
     ?>

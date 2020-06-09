@@ -26,3 +26,25 @@ function getBrowseList ($db) {
 
     return $productArray;
 }
+
+function submitOrder ($db, $first_name, $last_name, $email, $address) {
+
+    $statement = $db->prepare("INSERT INTO customer (firstname, lastname, email, address) VALUES ($first_name, $last_name, $email, $address)");
+    $statement->execute();
+
+    $newId = $pdo->lastInsertId('customer_id_seq');
+
+    $statement = $db->prepare("INSERT INTO public.order (customer_id, shipping_type_id, amountpaid) VALUES ($newId, '4', '0.00')");
+    $statement->execute();
+
+    $newId = $pdo->lastInsertId('order_id_seq');
+
+    foreach($_SESSION as $key => $product) {
+        $id = ltrim($product->get_product_id(), "_");
+        $amount = $product->get_quantity();
+    
+        $statement = $db->prepare("INSERT INTO cart (product_id, amount, order_id) VALUES ($id, $amount)");
+        $statement->execute();
+    }
+
+}

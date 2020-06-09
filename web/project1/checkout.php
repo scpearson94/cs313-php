@@ -17,7 +17,7 @@
 
     <div id="homeHeader">
         <?php include "heading.php"; ?>
-        <h1><section id="headerName">Karma Inc.</section>CHECKOUT</h1>
+        <h1><section id="headerName">Checkout</section>Chickens Galore</h1>
     </div>
 
     <div id="body-content">
@@ -26,9 +26,10 @@
     <p>Please enter your address for the purchase.</p>
 
     <form method="post" action="confirmationPage.php">
-        Street: <input type='text' name='street'/>
-        City: <input type='text' name='city'/>
-        State: <input type='text' name='state'/>
+        First Name: <input type='text' name='first_name'/>
+        Last Name: <input type='text' name='last_name'/>
+        Email: <input type='text' name='email'/>
+        Address: <input type='text' name='address'/>
         <input type='submit' name='purchase' value='Complete Purchase'/>
     </form>
     </div>

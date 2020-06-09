@@ -17,7 +17,7 @@
 
     <div id="homeHeader">
         <?php include "heading.php"; ?>
-        <h1><section id="headerName">Karma Inc.</section>CART</h1>
+        <h1><section id="headerName">Cart</section>Chickens Galore</h1>
     </div>
 
     <?php 
@@ -78,7 +78,6 @@
                     unset($_SESSION[$this->product_id]);
                 } else {
                     $_SESSION[$this->product_id] = $this;
-                    echo "<script>alert('" . $_SESSION[$this->product_id]->quantity . " ". $_SESSION[$this->product_id]->name . " in your cart.');</script>";
                 }
                 echo "<script>alert('1 ". $this->name . " was subtracted from your cart.');</script>";
             }
