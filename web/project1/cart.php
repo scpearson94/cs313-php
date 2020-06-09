@@ -169,18 +169,22 @@
 
     </div>
 
+    <button onclick="window.location.href = 'browse.php';">Keep Browsing</button>
+    <button onclick="checkCart()">Checkout</button>
+    <div id="validationMsg"></div>
+
     <script> 
         function checkCart() {
             <?php
             if (!empty($_SESSION)) { 
                 header("Location: checkout.php");
+            } else { ?>
+                document.getElementById("validationMsg").innerHTML = "Please add items to the cart before continuing to check out.";
+            <?php 
             }
             ?>
         }
     </script>
-
-    <button onclick="window.location.href = 'browse.php';">Keep Browsing</button>
-    <button onclick="checkCart()">Checkout</button>
     
     <?php include "footer.html"; ?>
     
