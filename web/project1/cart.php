@@ -169,9 +169,6 @@
 
     </div>
 
-    <button onclick="window.location.href = 'browse.php';">Keep Browsing</button>
-    <button onclick="checkCart()">Checkout</button>
-
     <?php 
         function checkCart() {
             if (!empty($_SESSION)) { 
@@ -179,6 +176,9 @@
             }
         }
     ?>
+    
+    <button onclick="window.location.href = 'browse.php';">Keep Browsing</button>
+    <button onclick="checkCart()">Checkout</button>
     
     <?php include "footer.html"; ?>
     
