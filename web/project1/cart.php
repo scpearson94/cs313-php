@@ -98,15 +98,17 @@
             $productToChange;
             $functionToCall = "";
 
+            echo "before the product to change setup ";
             //set the product to change
             foreach($_SESSION as $key => $product) {
                 if ($key == $myKey) {
                     $productToChange = $product;
                 }
             }
-
+            echo "made it past the product to change setup";
+            echo $productToChange;
             //set the function to call
-            switch ($myValue) {
+            /*switch ($myValue) {
                 case "-":
                     $functionToCall = "subtractFromCart";
                     break;
@@ -120,7 +122,7 @@
                     echo "nothing happened";
             }
             echo $productToChange;
-            echo $functionToCall;
+            echo $functionToCall;*/
             //change the product quantity
             //$productToChange->functionToCall();
         }
