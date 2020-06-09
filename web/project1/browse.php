@@ -74,12 +74,6 @@
         }
     }
 
-    if($_SERVER['REQUEST_METHOD'] == 'POST') {
-        $myPost = array_values($_POST);
-        $productToAdd = $myPost[0];
-        $productArray[$productToAdd]->addToCart();
-    }
-
     ?>
     <div id="homeHeader">
         <?php include "heading.php"; ?>
@@ -94,10 +88,18 @@
             <?php 
                 include "model.php"; 
                 $productArray = getBrowseList($db);
-                print_r($productArray);
             ?>
         </div>
     </form>
+
+    <?php 
+        if($_SERVER['REQUEST_METHOD'] == 'POST') {
+            $myPost = array_values($_POST);
+            $productToAdd = $myPost[0];
+            $productArray[$productToAdd]->addToCart();
+        }
+    ?>
+    
     <p class="clear"></p>
 
     <span class="fine-print"></span>
