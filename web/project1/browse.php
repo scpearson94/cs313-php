@@ -114,8 +114,8 @@
         <!--inventory table-->
         <div class="content">
             <?php 
-                include "model.php"; 
-                $productArray = getBrowseList();
+                //include "model.php"; 
+                //$productArray = getBrowseList();
                 if($_SERVER['REQUEST_METHOD'] == 'POST') {
                     $myPost = array_keys($_POST);
                     $productToAdd = $myPost[0];
