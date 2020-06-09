@@ -28,13 +28,14 @@
             private $quantity;
             private $image_url;
 
-            function __construct($name, $price, $image_url) {
+            function __construct($name, $price, $image_url, $product_id) {
                 $this->name = $name;
                 $this->price = $price;
                 $this->image_url = $image_url;
-
-                if (isset($_SESSION[$this->name])) {
-                    $this->quantity = $_SESSION[$this->name]->quantity;
+                $this->$productId = $product_id;
+    
+                if (isset($_SESSION[$this->product_id])) {
+                    $this->quantity = $_SESSION[$this->product_id]->quantity;
                 } else {
                     $this->quantity = 0;
                 }
@@ -56,30 +57,34 @@
                 return $this->quantity;
             }
 
+            function get_product_id() {
+                return $this->product_id;
+            }
+
             function get_total() {
                 return $this->price * $this->quantity;
             }
             
             function addToCart() {
                 $this->quantity += 1;
-                $_SESSION[$this->name] = $this;
-                echo "<script>alert('" . $_SESSION[$this->name]->quantity . " ". $_SESSION[$this->name]->name . " in your cart.');</script>";
+                $_SESSION[$this->product_id] = $this;
+                echo "<script>alert('" . $_SESSION[$this->product_id]->quantity . " ". $_SESSION[$this->product_id]->name . " in your cart.');</script>";
             }
                     
             function subtractFromCart() {
                 $this->quantity -= 1;
                 if ($this->quantity == 0) {
-                    unset($_SESSION[$this->name]);
+                    unset($_SESSION[$this->product_id]);
                 } else {
-                    $_SESSION[$this->name] = $this;
-                    echo "<script>alert('" . $_SESSION[$this->name]->quantity . " ". $_SESSION[$this->name]->name . " in your cart.');</script>";
+                    $_SESSION[$this->product_id] = $this;
+                    echo "<script>alert('" . $_SESSION[$this->product_id]->quantity . " ". $_SESSION[$this->product_id]->name . " in your cart.');</script>";
                 }
                 echo "<script>alert('1 ". $this->name . " was subtracted from your cart.');</script>";
             }
 
             function removeFromCart() {
                 $this->quantity = 0;
-                unset($_SESSION[$this->name]);
+                unset($_SESSION[$this->product_id]);
                 echo "<script>alert('". $this->name . " was removed from cart.');</script>";
             }
         }
@@ -92,6 +97,7 @@
             $productToChange;
             $functionToCall = "";
 
+            echo $
             //set the product to change
             foreach($_SESSION as $key => $product) {
                 if ($key == $myKey) {

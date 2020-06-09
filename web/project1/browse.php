@@ -34,14 +34,16 @@
         private $price;
         private $quantity;
         private $image_url;
+        private $productId;
 
-        function __construct($name, $price, $image_url) {
+        function __construct($name, $price, $image_url, $product_id) {
             $this->name = $name;
             $this->price = $price;
             $this->image_url = $image_url;
+            $this->$productId = $product_id;
 
-            if (isset($_SESSION[$this->name])) {
-                $this->quantity = $_SESSION[$this->name]->quantity;
+            if (isset($_SESSION[$this->product_id])) {
+                $this->quantity = $_SESSION[$this->product_id]->quantity;
             } else {
                 $this->quantity = 0;
             }
@@ -59,6 +61,10 @@
             return $this->image_url;
         }
 
+        function get_product_id() {
+            return $this->product_id;
+        }
+
         function get_quantity() {
             return $this->quantity;
         }
@@ -69,8 +75,8 @@
         
         function addToCart() {
             $this->quantity += 1;
-            $_SESSION[$this->name] = $this;
-            echo "<script>alert('" . $_SESSION[$this->name]->quantity . " ". $_SESSION[$this->name]->name . " in your cart.');</script>";
+            $_SESSION[$this->product_id] = $this;
+            echo "<script>alert('" . $_SESSION[$this->product_id]->quantity . " ". $_SESSION[$this->product_id]->name . " in your cart.');</script>";
         }
     }
 
