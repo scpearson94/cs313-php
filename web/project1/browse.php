@@ -61,12 +61,12 @@
             return $this->image_url;
         }
 
-        function get_product_id() {
-            return $this->product_id;
-        }
-
         function get_quantity() {
             return $this->quantity;
+        }
+
+        function get_product_id() {
+            return $this->product_id;
         }
 
         function get_total() {
@@ -77,6 +77,23 @@
             $this->quantity += 1;
             $_SESSION[$this->product_id] = $this;
             echo "<script>alert('" . $_SESSION[$this->product_id]->quantity . " ". $_SESSION[$this->product_id]->name . " in your cart.');</script>";
+        }
+                
+        function subtractFromCart() {
+            $this->quantity -= 1;
+            if ($this->quantity == 0) {
+                unset($_SESSION[$this->product_id]);
+            } else {
+                $_SESSION[$this->product_id] = $this;
+                echo "<script>alert('" . $_SESSION[$this->product_id]->quantity . " ". $_SESSION[$this->product_id]->name . " in your cart.');</script>";
+            }
+            echo "<script>alert('1 ". $this->name . " was subtracted from your cart.');</script>";
+        }
+
+        function removeFromCart() {
+            $this->quantity = 0;
+            unset($_SESSION[$this->product_id]);
+            echo "<script>alert('". $this->name . " was removed from cart.');</script>";
         }
     }
 
