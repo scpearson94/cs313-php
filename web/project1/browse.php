@@ -108,8 +108,7 @@
             <option value="default">--No filter selected--</option>
             <option value='livestock'>livestock</option>
             <?php
-                //include "model.php";
-                //displayFilterList();
+                include "filterList.php";
             ?>
         </select>
         <!--inventory table-->
