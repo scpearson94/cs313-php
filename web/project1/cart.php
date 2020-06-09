@@ -91,18 +91,13 @@
         }
 
         if($_SERVER['REQUEST_METHOD'] == 'POST') {
-            print_r($_POST);
             $keys = array_keys($_POST);
             $values = array_values($_POST);
-            print_r($keys);
-            print_r($values);
-            $myKey = $myPostKey[0];
-            $myValue = $myPostValue[0];
+            $myKey = $keys[0];
+            $myValue = $values[0];
             $productToChange;
             $functionToCall = "";
 
-            echo $myKey;
-            echo $myValue;
             //set the product to change
             foreach($_SESSION as $key => $product) {
                 if ($key == $myKey) {
