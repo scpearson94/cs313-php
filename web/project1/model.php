@@ -56,4 +56,21 @@ function submitOrder ($db, $first_name, $last_name, $email, $address) {
 
     }
 
+    return $newId;
+}
+
+function loopUpOrder ($db, $myOrder) {
+    $statement = $db->prepare("SELECT product_id, amount FROM cart WHERE order_id = $myOrder");
+    $statement->execute();
+    $output = "";
+
+    while ($row = $statement->fetch(PDO::FETCH_ASSOC)) {
+        $product_id = $row['product_id'];
+        $amount = $row['amount'];
+
+        $output .= "<div>" . $product_id . "</div>";
+        $output .= "<div>" . $amount . "</div>";
+    }
+
+    echo $output;
 }

@@ -1,4 +1,8 @@
 <?php
+
+    require "dbConnect.php";
+    $db = get_db();
+
     session_start();
 ?>
 
@@ -22,6 +26,19 @@
 
     <div id="body-content">
     <h2>My Order</h2>
+
+    <form method="post" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>">
+        <input type="text" id="orderLookupBox" name="myOrder"/>
+        <input type="submit" class="orderLookupBtn" name="submit" value="Look Up Order"/>
+    </form>
+
+    <?php
+        if(isset($_POST['myOrder'])) {
+            $myOrder = $_POST['myOrder'];
+            include "model.php";
+            lookUpOrder($db, $myOrder);
+        }
+    ?>
 
     </div>
     

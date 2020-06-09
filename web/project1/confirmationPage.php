@@ -152,7 +152,8 @@
                 <section>Address: " . $address . "</section>";
 
                 include "model.php"; 
-                submitOrder($db, $first_name, $last_name, $email, $address);
+                $confNum = submitOrder($db, $first_name, $last_name, $email, $address);
+                echo "<p>Order Confirmation Number: " . $confNum . "</p>";
                 session_unset();
             }
         }
