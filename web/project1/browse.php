@@ -70,7 +70,7 @@
         function addToCart() {
             $this->quantity += 1;
             $_SESSION[$this->name] = $this;
-            echo "<script>alert('There are " . $_SESSION[$this->name]->quantity . " ". $_SESSION[$this->name]->name . " in your cart.');</script>";
+            echo "<script>alert('" . $_SESSION[$this->name]->quantity . " ". $_SESSION[$this->name]->name . " in your cart.');</script>";
         }
     }
 

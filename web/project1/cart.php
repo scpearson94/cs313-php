@@ -22,14 +22,16 @@
 
     <?php 
 
-        class Letter {
+        class Product {
             private $name;
             private $price;
             private $quantity;
+            private $image_url;
 
-            function __construct($name, $price) {
+            function __construct($name, $price, $image_url) {
                 $this->name = $name;
                 $this->price = $price;
+                $this->image_url = $image_url;
 
                 if (isset($_SESSION[$this->name])) {
                     $this->quantity = $_SESSION[$this->name]->quantity;
@@ -46,6 +48,10 @@
                 return $this->price;
             }
 
+            function get_image_url() {
+                return $this->image_url;
+            }
+
             function get_quantity() {
                 return $this->quantity;
             }
@@ -54,93 +60,62 @@
                 return $this->price * $this->quantity;
             }
             
+            function addToCart() {
+                $this->quantity += 1;
+                $_SESSION[$this->name] = $this;
+                echo "<script>alert('" . $_SESSION[$this->name]->quantity . " ". $_SESSION[$this->name]->name . " in your cart.');</script>";
+            }
+                    
             function subtractFromCart() {
                 $this->quantity -= 1;
                 if ($this->quantity == 0) {
                     unset($_SESSION[$this->name]);
                 } else {
                     $_SESSION[$this->name] = $this;
-                    echo "There are " . $_SESSION[$this->name]->quantity . " " . $_SESSION[$this->name]->name . " in your cart.";
+                    echo "<script>alert('" . $_SESSION[$this->name]->quantity . " ". $_SESSION[$this->name]->name . " in your cart.');</script>";
                 }
-                echo $this->name . " was subtracted from your cart.";
-            }
-
-            function addToCart() {
-                $this->quantity += 1;
-                $_SESSION[$this->name] = $this;
-                echo "There are " . $_SESSION[$this->name]->quantity . " " . $_SESSION[$this->name]->name . " in your cart.";
+                echo "<script>alert('1 ". $this->name . " was subtracted from your cart.');</script>";
             }
 
             function removeFromCart() {
                 $this->quantity = 0;
                 unset($_SESSION[$this->name]);
-                echo $this->name . " was removed from cart.";
+                echo "<script>alert('". $this->name . " was removed from cart.');</script>";
             }
         }
 
-        $letterA = new Letter("A", 200);
-        $letterE = new Letter("E", 150);
-        $letterI = new Letter("I", 500);
-        $letterO = new Letter("O", 150);
-        $letterU = new Letter("U", 325);
-        $letterY = new Letter("Y", 1000);
+        if($_SERVER['REQUEST_METHOD'] == 'POST') {
+            $keys = array_keys($_POST);
+            $values = array_values($_POST);
+            $myKey = $myPostKey[0];
+            $myValue = $myPostValue[0];
+            $productToChange;
+            $functionToCall = "";
 
-        if(isset($_POST['A'])) { 
-            $letterA->removeFromCart(); 
-        }
-        if(isset($_POST['E'])) { 
-            $letterE->removeFromCart(); 
-        } 
-        if(isset($_POST['I'])) { 
-            $letterI->removeFromCart(); 
-        } 
-        if(isset($_POST['O'])) { 
-            $letterO->removeFromCart(); 
-        } 
-        if(isset($_POST['U'])) { 
-            $letterU->removeFromCart(); 
-        } 
-        if(isset($_POST['Y'])) { 
-            $letterY->removeFromCart(); 
-        } 
+            //set the product to change
+            foreach($_SESSION as $key => $product) {
+                if ($key == $myKey) {
+                    $productToChange = $product;
+                }
+            }
 
-        if(isset($_POST['subtractA'])) { 
-            $letterA->subtractFromCart(); 
+            //set the function to call
+            switch ($myValue) {
+                case "-":
+                    $functionToCall = "subtractFromCart";
+                    break;
+                case "+";
+                    $functionToCall = "addToCart";
+                    break;
+                case "Remove from Cart";
+                    $functionToCall = "removeFromCart";
+                    break;
+                default:
+                    echo "nothing happened";
+            }
+            //change the product quantity
+            $productToChange->functionToCall();
         }
-        if(isset($_POST['subtractE'])) { 
-            $letterE->subtractFromCart(); 
-        } 
-        if(isset($_POST['subtractI'])) { 
-            $letterI->subtractFromCart(); 
-        } 
-        if(isset($_POST['subtractO'])) { 
-            $letterO->subtractFromCart(); 
-        } 
-        if(isset($_POST['subtractU'])) { 
-            $letterU->subtractFromCart(); 
-        } 
-        if(isset($_POST['subtractY'])) { 
-            $letterY->subtractFromCart(); 
-        } 
-
-        if(isset($_POST['addA'])) { 
-            $letterA->addToCart(); 
-        }
-        if(isset($_POST['addE'])) { 
-            $letterE->addToCart(); 
-        } 
-        if(isset($_POST['addI'])) { 
-            $letterI->addToCart(); 
-        } 
-        if(isset($_POST['addO'])) { 
-            $letterO->addToCart(); 
-        } 
-        if(isset($_POST['addU'])) { 
-            $letterU->addToCart(); 
-        } 
-        if(isset($_POST['addY'])) { 
-            $letterY->addToCart(); 
-        } 
 
     ?>
 
@@ -158,24 +133,21 @@
         </tr>
 
         <?php
-            $vowels = array("A","E","I","O","U","Y");
             $totalCost = 0;
-            foreach($vowels as $vowel) {
-                if (isset($_SESSION[$vowel])) {
-                    echo 
-                    "<tr> 
-                        <td>The letter " . $vowel . "</td>
-                        <td>$" . $_SESSION[$vowel]->get_price() . "</td> 
-                        <td>" . $_SESSION[$vowel]->get_quantity() . "</td>
-                        <td>$" . $_SESSION[$vowel]->get_total() . "</td>
-                        <td>
-                            <input type='submit' name='subtract" . $vowel . "' value='-'/>
-                            <input type='submit' name='add" . $vowel . "' value='+'/>
-                            <input type='submit' name='" . $vowel . "' value='Remove from Cart'/>
-                        </td>
-                    </tr>";
-                    $totalCost += $_SESSION[$vowel]->get_total();
-                }
+            foreach($_SESSION as $key => $product) {
+                echo 
+                "<tr> 
+                    <td>" . $product->get_name() . "</td>
+                    <td>$" . $product->get_price() . "</td> 
+                    <td>" . $product->get_quantity() . "</td>
+                    <td>$" . $product->get_total() . "</td>
+                    <td>
+                        <input type='submit' name='" . $product->get_name() . "' value='-'/>
+                        <input type='submit' name='" . $product->get_name() . "' value='+'/>
+                        <input type='submit' name='" . $product->get_name() . "' value='Remove from Cart'/>
+                    </td>
+                </tr>";
+                $totalCost += $product->get_total();
             }
             echo 
             "<tr>
