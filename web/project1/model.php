@@ -1,5 +1,21 @@
 <?php
 
+function displayFilterList () {
+    require "dbConnect.php";
+    $db = get_db();
+    $statement = $db->prepare("SELECT category FROM product_type AS pt JOIN product AS p ON p.product_type_id = pt.id");
+    $statement->execute();
+    $output = "";
+
+    while ($row = $statement->fetch(PDO::FETCH_ASSOC)) {
+        $category = $row['category'];
+        $output .=
+        "<option value='" . $category . "'>" . $category . "</option>";
+    }
+
+    echo $output;
+}
+
 function getBrowseList () {
     require "dbConnect.php";
     $db = get_db();
