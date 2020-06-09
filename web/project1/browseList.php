@@ -4,7 +4,7 @@ function getBrowseList ($filter) {
     
     $db = get_db();
     $stmt = "SELECT name, price, image_url FROM product";
-    if ($filter != "") {
+    if ($filter != "" && $filter != "--No filter selected--") {
         $stmt .= " AS p JOIN product_type AS pt ON p.product_type_id = pt.id WHERE category = '$filter';";
     }
     $statement = $db->prepare($stmt);
