@@ -19,4 +19,6 @@ function getBrowseList ($db) {
     }
 
     echo $output;
+
+    return $productArray;
 }

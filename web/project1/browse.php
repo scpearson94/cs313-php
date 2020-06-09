@@ -27,6 +27,8 @@
 <body>
     <?php 
 
+    $productArray = array();
+
     class Product {
         private $name;
         private $price;
@@ -66,6 +68,7 @@
         }
         
         function addToCart($name) {
+
             $this->quantity += 1;
             $_SESSION[$this->name] = $this;
             echo "There are " . $_SESSION[$this->name]->quantity . " " . $_SESSION[$this->name]->name . " in your cart.";
@@ -81,7 +84,7 @@
     ?>
     <div id="homeHeader">
         <?php include "heading.php"; ?>
-        <h1><section id="headerName">Karma Inc.</section>BROWSE</h1>
+        <h1><section id="headerName">Browse</section>Chickens Galore</h1>
     </div>
 
     <h2>Current Inventory</h2>
@@ -91,8 +94,8 @@
         <div class="content">
             <?php 
                 include "model.php"; 
-                getBrowseList($db);
-                
+                $productArray = getBrowseList($db);
+                print_r($productArray);
             ?>
         </div>
     </form>
