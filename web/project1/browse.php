@@ -77,7 +77,8 @@
     if($_SERVER['REQUEST_METHOD'] == 'POST') {
         $myPost = array_values($_POST);
         $productToAdd = $myPost[0];
-        $productArray[$productToAdd]->addToCart();
+        //$productArray[$productToAdd]->addToCart();
+        echo "in the post if statement";
     }
 
     ?>
