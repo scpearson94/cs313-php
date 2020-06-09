@@ -16,6 +16,10 @@ body {
     font-size: 1.5vw;
 }
 
+form {
+    padding: 10px;
+}
+
 h1 {
     color: aqua;
     padding: 1em;

@@ -27,11 +27,15 @@
     <div id="body-content">
     <h2>My Order</h2>
 
+    <p>Please enter your order number.</p>
+
     <form method="post" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>">
-        <input type="text" id="orderLookupBox" name="myOrder"/>
-        <input type="submit" class="orderLookupBtn" name="submit" value="Look Up Order"/>
+        <input type='text' name='myOrder'/>
+        <input type='submit' class='orderLookupBtn' name='submit' value='Look Up Order'/>
     </form>
 
+    </div>
+    
     <?php
         if(isset($_POST['myOrder'])) {
             $myOrder = $_POST['myOrder'];
@@ -39,8 +43,6 @@
             lookUpOrder($db, $myOrder);
         }
     ?>
-
-    </div>
     
     <?php include "footer.html"; ?>
     
