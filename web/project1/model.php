@@ -37,12 +37,12 @@ function submitOrder ($db, $first_name, $last_name, $email, $address) {
 	$statement->bindValue(':address', $address);
     $statement->execute();
     echo "2 ";
-    $newId = $pdo->lastInsertId('customer_id_seq');
+    $newId = $db->lastInsertId('customer_id_seq');
     echo "3 ";
     $statement = $db->prepare("INSERT INTO public.order (customer_id, shipping_type_id, amountpaid) VALUES ($newId, '4', '0.00')");
     $statement->execute();
     echo "4 ";
-    $newId = $pdo->lastInsertId('order_id_seq');
+    $newId = $db->lastInsertId('order_id_seq');
     echo "5 ";
     foreach($_SESSION as $key => $product) {
         echo "6 ";
