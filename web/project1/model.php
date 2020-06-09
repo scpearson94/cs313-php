@@ -84,7 +84,7 @@ function lookUpOrder ($myOrder) {
             <td>$" . $product_total . "</td>
         </tr>";
         
-        $totalCost += $product->get_total();
+        $totalCost += $product_total;
     }
     $output .= 
     "<tr>
