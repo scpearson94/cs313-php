@@ -130,8 +130,8 @@ img {
     justify-content: center;
 }
 
-.fine-print {
-    font-size: 0.5em;
+.validationMsg {
+    color: red;
 }
 
 .clear {

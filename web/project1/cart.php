@@ -116,10 +116,19 @@
                     $functionToCall = "removeFromCart";
                     break;
                 default:
-                    echo "nothing happened";
+                    if (!empty($_SESSION)) { 
+                        header("Location: checkout.php");
+                    } else { ?>
+                    <script>
+                        document.getElementById("validationMsg").innerHTML = "Please add items to the cart before continuing to check out.";
+                    </script>
+                    <?php
+                    }
             }
             //change the product quantity
-            $productToChange->$functionToCall();
+            if ($functionToCall != "") {
+                $productToChange->$functionToCall();
+            }
         }
 
     ?>
@@ -165,26 +174,14 @@
             </tr>"
         ?>
     </table>
+    <button onclick="window.location.href = 'browse.php';">Keep Browsing</button>
+    <input type="submit" name="checkout" value="Checkout"/>
+
     </form>
 
     </div>
 
-    <button onclick="window.location.href = 'browse.php';">Keep Browsing</button>
-    <button onclick="checkCart()">Checkout</button>
     <div id="validationMsg"></div>
-
-    <script> 
-        function checkCart() {
-            <?php
-            if (!empty($_SESSION)) { 
-                header("Location: checkout.php");
-            } else { ?>
-                document.getElementById("validationMsg").innerHTML = "Please add items to the cart before continuing to check out.";
-            <?php 
-            }
-            ?>
-        }
-    </script>
     
     <?php include "footer.html"; ?>
     
