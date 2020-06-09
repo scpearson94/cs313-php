@@ -96,7 +96,8 @@
         if($_SERVER['REQUEST_METHOD'] == 'POST') {
             $myPost = array_keys($_POST);
             $productToAdd = $myPost[0];
-            $productArray[$productToAdd]->addToCart();
+            echo $productToAdd;
+            //$productArray[$productToAdd]->addToCart();
         }
     ?>
 
