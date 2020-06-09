@@ -67,18 +67,17 @@
             return $this->price * $this->quantity;
         }
         
-        function addToCart($name) {
-
+        function addToCart() {
             $this->quantity += 1;
             $_SESSION[$this->name] = $this;
-            echo "There are " . $_SESSION[$this->name]->quantity . " " . $_SESSION[$this->name]->name . " in your cart.";
+            alert("There are " . $_SESSION[$this->name]->quantity . " " . $_SESSION[$this->name]->name . " in your cart.");
         }
     }
 
     if($_SERVER['REQUEST_METHOD'] == 'POST') {
         $myPost = array_values($_POST);
         $productToAdd = $myPost[0];
-        addToCart($productToAdd);
+        $productArray[$productToAdd]->addToCart();
     }
 
     ?>
