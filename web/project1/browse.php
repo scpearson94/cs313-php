@@ -40,7 +40,7 @@
             $this->name = $name;
             $this->price = $price;
             $this->image_url = $image_url;
-            $this->$product_id = $product_id;
+            $this->product_id = $product_id;
 
             if (isset($_SESSION[$this->product_id])) {
                 $this->quantity = $_SESSION[$this->product_id]->quantity;
