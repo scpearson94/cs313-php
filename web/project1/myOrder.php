@@ -23,7 +23,7 @@
     <div id="body-content">
     <h2>My Order</h2>
 
-    <p>Please enter your order number.</p>
+    <p>Please enter your order number. This number was given to you after you submitted your order.</p>
 
     <form method="post" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>">
         <input type='text' name='myOrder'/>
