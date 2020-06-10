@@ -23,6 +23,12 @@
     <div id="body-content">
     <h2>Home</h2>
 
+    <ul>
+        <li><a href="browse.php"></a>Browse inventory and add items to the cart</li>
+        <li><a href="myOrder.php"></a>Look up an order using the order confirmation number</li>
+        <li><a href="cart.php"></a>Continue to the cart to place an order</li>
+    </ul>
+
     </div>
     
     <?php include "footer.html"; ?>
