@@ -122,11 +122,9 @@
                 }
                 $productArray = getBrowseList($filter);
                 if($_SERVER['REQUEST_METHOD'] == 'POST') {
-                    if (!isset($_POST['filter'])) {
-                        $myPost = array_keys($_POST);
-                        $productToAdd = $myPost[0];
-                        $productArray[$productToAdd]->addToCart();
-                    }
+                    $myPost = array_keys($_POST);
+                    $productToAdd = $myPost[0];
+                    $productArray[$productToAdd]->addToCart();
                 }
             ?>
         </div>
