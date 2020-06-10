@@ -172,10 +172,12 @@
             </tr>"
         ?>
     </table>
-    <button onclick="window.location.href = 'browse.php';">Keep Browsing</button>
+    
     <input type="submit" name="checkout" value="Checkout"/>
 
     </form>
+
+    <button onclick="window.location.href = 'browse.php';">Keep Browsing</button>
 
     </div>
 
